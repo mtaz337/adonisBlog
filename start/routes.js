@@ -19,12 +19,7 @@ const PostController = require('../app/Controllers/Http/PostController')
 const Route = use('Route')
 
 Route.on('/').render('home')
-// Route.get('/example',()=>{
-//   return `hello there`;
-// })
-// Route.get('example/:id',({params})=>{
-//   return `this is ${params.id}`;
-// })
-
-Route.get('/fruits', 'PostController.index')
 Route.get('/friends', 'FriendController.index')
+Route.get('/fruits', 'PostController.index')
+Route.get('/fruits/:id', 'PostController.detailedFruit')
+Route.get('/friends/:id', 'FriendController.singleFriend')
