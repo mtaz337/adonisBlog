@@ -4,13 +4,13 @@
 <div style='background-color:	#ffddca; color:#e97451'>
       <h1 style='text-align:center;'> {{title}} </h1>
       
-      <ul>
+      <ul class="list-group">
       @each(fruit in fruits)
-        <li style="padding:2rem 4rem;margin:1rem 1rem; text-align:center;border-radius:1rem;background-color:#fba276"> 
-          <img src="{{fruit.photo}}" style="height:150px;width:150px;border-radius:1rem;">
-          <h3> {{fruit.name}} </h3>
+        <ul class='list-group-item' style="padding:2rem 2rem;margin:1rem 2rem; text-align:center;border-radius:1rem;background-color:#fba276" > 
+          <a href='/fruits/{{fruit.id}}'> <img src="{{fruit.photo}}" style="height:150px;width:150px;border-radius:1rem;" > </a>
+         <a href='/fruits/{{fruit.id}}'> <h3 href='/fruits/:id'> {{fruit.name}} </h3> </a>
           <p> {{fruit.tastes}} </p>
-        </li>
+        </ul>
       @endeach
       </ul>
   </div>
