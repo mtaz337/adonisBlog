@@ -1,0 +1,16 @@
+@layout('main')
+@section('content')
+<div style='background-color:	#d7f0ed; color:#1e4d66'>
+  <h1 style='text-align:center;'> {{title}} </h1>
+
+  <ul>
+  @each(friend in friends)
+    <li style="padding:2rem 4rem;margin:1rem 1rem; text-align:center;border-radius:1rem;background-color:#93ede1"> 
+      <img src="{{friend.photo}}" style="height:150px;width:150px;border-radius:1rem;">
+      <h3> {{friend.name}} </h3>
+      <p> {{friend.job}} </p>
+    </li>
+  @endeach
+  </ul>
+</div>
+@endsection
