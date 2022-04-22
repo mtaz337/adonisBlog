@@ -1,5 +1,7 @@
 'use strict'
 
+const PostController = require('../app/Controllers/Http/PostController')
+
 /*
 |--------------------------------------------------------------------------
 | Routes
@@ -16,4 +18,13 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.on('/').render('welcome')
+Route.on('/').render('home')
+// Route.get('/example',()=>{
+//   return `hello there`;
+// })
+// Route.get('example/:id',({params})=>{
+//   return `this is ${params.id}`;
+// })
+
+Route.get('/fruits', 'PostController.index')
+Route.get('/friends', 'FriendController.index')
