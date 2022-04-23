@@ -1,16 +1,25 @@
 @layout('main')
 @section('content')
-<div style='background-color:	#d7f0ed; color:#1e4d66'>
+<div >
   <h1 style='text-align:center;'> {{title}} </h1>
   <a href="/friends/" style="text-decoration:none; text-align:center; margin-left: 2rem;"> Go Back to Friends </a>     
-
+<hr>
   <ul class="list-group">
     <ul class="list-group-item" style="padding:2rem 4rem;margin:1rem 2rem; text-align:center;border-radius:1rem;background-color:#93ede1"> 
       <img src="{{friend.photo}}" style="height:150px;width:150px;border-radius:1rem;">
-      <h3> {{friend.name}} </h3>
-      <p> {{friend.job}} </p>
+      <h1> {{friend.name}} </h1>
+      <h3> {{friend.job}} </h3>
       <p> {{friend.descriptions}} </p>
     </ul>
   </ul>
+  <hr>
+  <a  href="/friends/edit/{{ friend.id }}" class="btn btn-dark  float-start" style="width:5rem; margin-left:2rem"> Edit </a>
+
+
+ <form action="{{'/friends/'+ friend.id +'?_method=DELETE'}}" method="POST">
+  {{ csrfField() }}
+  <button type="submit" class="btn btn-danger  float-end" style="width:5rem;  margin-right:2rem;"> Delete</button>
+
+ </form>
 </div>
 @endsection

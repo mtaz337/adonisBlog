@@ -4,12 +4,23 @@
 <h1 style='text-align:center;'> {{title}} </h1>
  <a href="/fruits/" style="text-decoration:none; text-align:center; margin-left: 2rem"> Go Back to Fruits </a>     
 <ul class="list-group">
-
+<hr>
   <ul class='list-group-item' style="padding:2rem 2rem;margin:1rem 2rem; text-align:center;border-radius:1rem;background-color:#fba276"> 
     <img src="{{fruit.photo}}" style="height:150px;width:150px;border-radius:1rem;">
     <h1> {{fruit.name}} </h1>
     <h3> {{fruit.tastes}} </h3>
     </p> {{fruit.description}} </p>
   </ul>
+<hr>
+
+ <a  href="/fruits/edit/{{ fruit.id }}" class="btn btn-dark  float-start" style="width:5rem; margin-left:2rem"> Edit </a>
+
+
+ <form action="{{'/fruits/'+ fruit.id +'?_method=DELETE'}}" method="POST">
+  {{ csrfField() }}
+  <button type="submit" class="btn btn-danger  float-end" style="width:5rem; margin-top:-2.5rem; margin-right:2rem;"> Delete</button>
+
+ </form>
+
 
 @endsection
