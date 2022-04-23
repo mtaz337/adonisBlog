@@ -1,0 +1,32 @@
+@layout('main')
+@section('content')
+
+ 
+ <div class="title">
+  <div style="">
+    <a href="/fruits/" style="text-decoration:none; text-align:center; margin-top: 0.5rem !important; position:absolute;" > Go Back to Fruits </a>     
+   </div>
+    <h1 style="text-align:center; margin-top: 1.5rem !important;"> Add Your Favourite Fruit </h1>
+  </div>
+  <form action="/fruits" method="POST">
+    {{ csrfField() }}
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" name="fruitName" class="form-control" placeholder="Please Enter Fruit's Name">
+    </div>
+    <div class="form-group">
+      <label>Image Link</label>
+      <input type="text" name="photo" class="form-control" placeholder="Please Enter Fruit's Image URL">
+    </div>
+    <div class="form-group">
+    <div class="form-group">
+      <label>Tastes</label>
+      <input type="text" name="taste" class="form-control" placeholder="Please Describe It's Taste">
+    </div>
+    
+      <label>Description</label>
+      <input type="text" name="description" class="form-control" placeholder="Please Write Something About This Fruit">
+    </div>
+    <button class='btn btn-primary' type="submit" style="margin-top:0.5rem"> Submit </button>
+  </form>
+@endsection
