@@ -17,6 +17,23 @@ class PostController {
      fruit: fruit
    })
   }
+
+  async add({view}){
+    return view.render('addFruit')
+  }
+  async store({request,response,session}){
+    const fruit = new Fruit();
+
+    fruit.name = request.input('fruitName')
+    fruit.photo = request.input('photo')
+    fruit.tastes = request.input('taste')
+    fruit.description = request.input('description')
+
+    await fruit.save()
+    session.flash({ notification:'New Fruit Added'})
+
+    return response.redirect('/fruits/')
+  }
 }
 
 module.exports = PostController

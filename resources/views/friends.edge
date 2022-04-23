@@ -6,9 +6,9 @@
   <ul class="list-group">
   @each(friend in friends)
     <ul class="list-group-item" style="padding:2rem 4rem;margin:1rem 2rem; text-align:center;border-radius:1rem;background-color:#93ede1"> 
-      <img src="{{friend.photo}}" style="height:150px;width:150px;border-radius:1rem;">
-      <a href="/friends/{{friend.id}}"><h3> {{friend.name}} </h3></a>
-      <a href="/friends/{{friend.id}}"> <p> {{friend.job}} </p></a>
+      <a href="/friends/{{friend.id}}" style="text-decoration:none;"><img src="{{friend.photo}}" style="height:150px;width:150px;border-radius:1rem;"></a>
+      <a href="/friends/{{friend.id}}" style="text-decoration:none;"><h3> {{friend.name}} </h3></a>
+       <p> {{friend.job}} </p>
     </ul>
   @endeach
   </ul>

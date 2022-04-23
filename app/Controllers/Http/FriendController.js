@@ -16,6 +16,10 @@ class FriendController {
       friend: friend
     })
   }
+  async add({view}){
+    return view.render('addfriend')
+  }
+
 }
 
 module.exports = FriendController
