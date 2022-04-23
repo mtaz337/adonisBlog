@@ -2,13 +2,18 @@
 @section('content')
 <div style='background-color:	#d7f0ed; color:#1e4d66'>
   <h1 style='text-align:center;'> {{title}} </h1>
-
+  
+  @if(old('notification'))
+  <div class="alert alert-success" style="margin:1rem 0rem">
+    {{old('notification')}}
+  </div>
+@endif 
   <ul class="list-group">
   @each(friend in friends)
     <ul class="list-group-item" style="padding:2rem 4rem;margin:1rem 2rem; text-align:center;border-radius:1rem;background-color:#93ede1"> 
       <a href="/friends/{{friend.id}}" style="text-decoration:none;"><img src="{{friend.photo}}" style="height:150px;width:150px;border-radius:1rem;"></a>
-      <a href="/friends/{{friend.id}}" style="text-decoration:none;"><h3> {{friend.name}} </h3></a>
-       <p> {{friend.job}} </p>
+      <a href="/friends/{{friend.id}}" style="text-decoration:none; color:black"><h3> {{friend.name}} </h3></a>
+       <h5> {{friend.job}} </h5>
     </ul>
   @endeach
   </ul>
