@@ -1,6 +1,7 @@
 'use strict'
 const Friend = use('App/Models/Friend')
-
+const IntouchFriend = use('App/Models/IntouchFriend')
+const Database = use('Database')
 const {validate} = use('Validator')
 
 class FriendController {
@@ -19,6 +20,7 @@ class FriendController {
       friend: friend
     })
   }
+
   async add({view}){
     return view.render('addfriend')
   }
@@ -36,11 +38,16 @@ class FriendController {
       return response.redirect('back')
     }
     const friend = new Friend();
-
+    
+    const friendname = request.input('friendName')
     friend.name = request.input('friendName')
     friend.photo = request.input('photo')
     friend.job = request.input('job')
     friend.descriptions = request.input('description')
+    const intouch =  await Database.table('intouch_friends').where('name', friendname).first()
+     if(intouch.name===friend.name){
+       friend.is_in_touch = true
+     }
 
     await friend.save()
     session.flash({ notification:'New Friend Added'})
@@ -80,13 +87,38 @@ class FriendController {
 
      return response.redirect('/friends')
    }
+
    async destroy({params,session,response}){
-   const friend = await friend.find(params.id)
+   const friend = await Friend.find(params.id)
    
    await friend.delete()
 
    session.flash({notification:'A friend Was Delete from The List'})
    return response.redirect('/friends/')
+   }
+
+   async addIntouch({view}){
+   return view.render('addintouch')
+   }
+
+   async storeintouch({view,request, response, session}){
+    const validation = await validate(request.all(),{
+      name: 'required|min:3|max:20',
+    })
+    if(validation.fails()){
+      session.withErrors(validation.messages()).flashAll()
+      return response.redirect('back')
+    }
+    const intouchFriend = new IntouchFriend();
+
+    intouchFriend.name = request.input('name')
+    if(request.input('sameage')==='yes'){
+      intouchFriend.same_age = true
+    }
+    await intouchFriend.save()
+    session.flash({ notification:'New Intouched Friend Added'})
+
+    return response.redirect('/friends/addintouch/')
    }
 
 }

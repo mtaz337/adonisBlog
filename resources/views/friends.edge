@@ -15,6 +15,14 @@
       <a href="/friends/{{friend.id}}" style="text-decoration:none; color:black"><h3> {{friend.name}} </h3></a>
        <h5> {{friend.job}} </h5>
     </ul>
+    <div class="row justify-content-center">
+      @if(friend.is_in_touch)
+    <a type="submit" class="btn btn-success " style="width:10rem;" href="/friends/{{friend.id}}"> View Intouch Friend </a>
+    </div>
+    @else
+    <a type="submit" class="btn btn-danger " style="width:10rem;" href="/friends/{{friend.id}}"> View Not Intouch Friend </a>
+    @endif
+  </div>
   @endeach
   </ul>
 </div>
