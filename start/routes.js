@@ -24,6 +24,8 @@ Route.post('/friends/','FriendController.store')
 
 Route.get('/friends', 'FriendController.index')
 
+Route.get('/friends', 'FriendController.setIntouch')
+
 Route.get('/fruits', 'PostController.index')
 
 Route.post('/fruits/','PostController.store')

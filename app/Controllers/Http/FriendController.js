@@ -121,6 +121,20 @@ class FriendController {
     return response.redirect('/friends/addintouch/')
    }
 
+   async setIntouch({response}){
+    const intouch_friends = await Database.from('intouch_friends').select('name')
+    intouch_friends = intouch_friends.toJSON()
+
+    for(let i=0 ;i<intouch_friends.length;i++){
+      const friend = await Database.table('friends').where('name', intouch_friends.name).first()
+      if(friend!==null){
+        friend.is_in_touch = true;
+       await friend.save()
+      }
+    }
+    return response.redirect('/friends/')
+   }
+
 }
 
 module.exports = FriendController
